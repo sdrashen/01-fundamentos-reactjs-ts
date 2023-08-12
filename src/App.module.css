@@ -1,0 +1,27 @@
+.wrapper {
+  max-width: 70rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+
+  display: grid;
+  grid-template-columns: 256px 1fr;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+  html {
+    /* Regra de 3 para descobrir quanto em % deve ser o valor para não usar px.
+    Porque se usar px, será um valor bruto e via parar de funfar a possibilidade
+    de o user no dispositivo dele aumentar e diminuir a fonte.
+    16 == 100%
+    14 == x
+    x == 87.5% */
+    font-size: 87.5%;
+    /*Por causa do rem, se desabilita isso tudo cresce, até o espaçamento etntre os elementos.*/
+  }
+
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+}
