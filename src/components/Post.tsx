@@ -5,19 +5,35 @@ import { Avatar } from './Avatar'
 import { Comment } from './Comment'
 
 import styles from './Post.module.css'
-import { useState } from 'react'
+import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react'
 
-export function Post({author, publishedAt, content}) {
+interface Author {
+  name: string;
+  role: string;
+  avatarUrl: string;
+}
+
+interface Content {
+  type: 'paragraph' | 'link';
+  content: string;
+}
+interface PostProps {
+  author: Author;
+  publishedAt: Date;
+  content: Content[];
+}
+
+export function Post({ author, publishedAt, content }: PostProps) {
 
   const [comments, setComments] = useState([
-   'Post muy bacana, hein?'
+    'Post muy bacana, hein?'
   ])
 
   const [newCommentText, setNewCommentText] = useState('')
 
   const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
     locale: ptBR,
-  }) 
+  })
 
   const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
     locale: ptBR,
@@ -25,23 +41,24 @@ export function Post({author, publishedAt, content}) {
   })
   /**const Publicado a tanto tempo da data atual */
 
-  function handleCreateNewComment() {
+  function handleCreateNewComment(event: FormEvent) {
     event.preventDefault()
 
     setComments([...comments, newCommentText]);
     setNewCommentText('');
   }
 
-  function handleNewCommentChange() {
+  function handleNewCommentChange(event: ChangeEvent<HTMLTextAreaElement>) {
+    event.target.setCustomValidity('')
     setNewCommentText(event.target.value);
   }
 
-  function handleNewCommentInvalid() {
-    event.target.setCustomValidty('Esse campo é obrigatório!');
+  function handleNewCommentInvalid(event: InvalidEvent<HTMLTextAreaElement>) {
+    event.target.setCustomValidity('Esse campo é obrigatório!');
   }
 
-  function deleteComment(commentToDelete) {
-   
+  function deleteComment(commentToDelete: string) {
+
     const commentsWithoutTheDeletedOne = comments.filter(comment => {
       return comment !== commentToDelete
     })
@@ -51,7 +68,7 @@ export function Post({author, publishedAt, content}) {
   const isNewCommentEmpty = newCommentText.length === 0;
 
   return (
-     <article className={styles.post}>
+    <article className={styles.post}>
       <header>
         <div className={styles.author}>
           <Avatar src={author.avatarUrl} />
@@ -61,7 +78,7 @@ export function Post({author, publishedAt, content}) {
           </div>
         </div>
 
-        <time title={publishedDateFormatted} dataTime={publishedAt.toISOString()}>
+        <time title={publishedDateFormatted} dateTime={publishedAt.toISOString()}>
           {publishedDateRelativeToNow}
         </time>
       </header>
@@ -80,7 +97,7 @@ export function Post({author, publishedAt, content}) {
         <strong>
           Deixe seu feedback
         </strong>
-        <textarea 
+        <textarea
           name='comment'
           placeholder='Deixe um comentário'
           value={newCommentText}
@@ -97,15 +114,15 @@ export function Post({author, publishedAt, content}) {
       <div className={styles.commentList}>
         {comments.map(comment => {
           return (
-            <Comment 
+            <Comment
               key={comment}
-              content={comment} 
+              content={comment}
               onDeleteComment={deleteComment}
-              /**deleteComment é a function que está sendo passada como prop */
+            /**deleteComment é a function que está sendo passada como prop */
             />
           )
         })}
       </div>
-     </article> 
+    </article>
   )
 }
