@@ -106,6 +106,7 @@
 
 .commentForm button[type=submit]:not(:disabled):hover {
   background: var(--green-300);
+  color: var(--gray-100);
 }
 
 .commentForm button[type=submit]:disabled {
