@@ -1,27 +1,28 @@
-# React + TypeScript + Vite
+# Fundamentos do React JS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é o projeto que desenvolvi como parte do curso React JS, do Ignite na plataforma da Rocketseat. 
+É um projeto pessoal que visa consolidar os conhecimentos que adquiri durante o curso sobre React JS, Typescript e Vite.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Criação de posts e comentários, bem como a remoção e comentários.
 
-## Expanding the ESLint configuration
+## Como Usar
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Clone este repositório: `git clone https://github.com/sdrashen/01-fundamentos-reactjs-ts.git`
+2. Instale as dependências: `npm install`
+3. Execute o projeto: `npm run dev`
+4. Acesse no navegador: `http://localhost:(o qual aparecer no seu terminal)`
 
-- Configure the top-level `parserOptions` property like this:
+## Tecnologias Utilizadas
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- [Lista das tecnologias utilizadas, como React, CSS, etc.]
+- React JS
+- Typescript
+- Vite
+- CSS
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Autor
+
+[Sabrina Drashen]
+[sdrashen@gmail.com]
